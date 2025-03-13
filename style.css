@@ -1,0 +1,521 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f3;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background: #1B5E20;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    align-items: center;
+    max-height: 80px; /* Defina um limite para a altura do header */
+    overflow: hidden;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre o logo e o texto */
+}
+
+.logo img {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
+    max-height: 50px; /* Garante que a imagem não ultrapasse o limite do header */
+}
+  
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #A5D6A7;
+}
+
+/* Banner */
+.banner {
+    background: url('foto_assis.jpg') repeat center center/cover; 
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.banner h1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.banner h1 {
+    font-size: 36px;
+    color:#ffffff;
+    z-index: 1 !important;
+}
+
+.banner p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.botao {
+    display: inline-block;
+    background: #43A047;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background: #2E7D32;
+}
+
+
+/* Destaques */
+.destaques {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    background: #E8F5E9;
+}
+
+.card {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.card h3 {
+    font-size: 22px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Rodapé */
+footer {
+    background: #1B5E20;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Estilização do Catálogo */
+.catalogo {
+    text-align: center;
+    padding: 40px;
+    background-color: #f0f4f3;
+}
+
+.catalogo h1 {
+    font-size: 36px;
+    color: #1B5E20;
+}
+
+.catalogo p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Grid de espécies */
+.grid-especies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Estilização dos quadros */
+.quadro {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.quadro:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagens das árvores */
+.quadro img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Títulos dos quadros */
+.quadro h3 {
+    font-size: 22px;
+    color: #2E7D32;
+    margin: 10px 0;
+}
+
+/* Informações textuais */
+.quadro p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Estilização da Página Sobre */
+.sobre {
+    text-align: center;
+    padding: 40px;
+    background-color: #f0f4f3;
+}
+
+.sobre h1 {
+    font-size: 36px;
+    color: #1B5E20;
+}
+
+.sobre p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Seções da página */
+.missao, .instituicoes, .responsaveis {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.missao h2, .instituicoes h2, .responsaveis h2 {
+    color: #2E7D32;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.instituicoes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.instituicoes ul li {
+    font-size: 18px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Responsáveis */
+.responsavel {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.responsavel img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.responsavel h3 {
+    font-size: 20px;
+    color: #2E7D32;
+    margin: 5px 0;
+}
+
+.responsavel p {
+    font-size: 16px;
+    color: #555;
+    text-align: justify;
+    margin-right: 40px;
+}
+
+.responsaveis h2 {
+    margin-bottom: 30px;
+}
+
+/* Estilos Adicionados para Personalização do Conteúdo da Página */
+.colaborador{
+    font-size: 26px;
+    text-align: center;
+    background: linear-gradient(90deg, #1B5E20, #2E7D32, #43A047);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text-animation 2s infinite linear;
+}
+      
+    @keyframes text-animation {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 200%;
+        }
+    }
+      
+.categoria_personas {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+}
+
+.category {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.category h3 {
+    font-size: 22px;
+    color: #2E7D32;
+    margin-bottom: 15px;
+}
+
+.category p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.category .btn {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.category .btn:hover {
+    background-color: #004c99;
+}
+
+
+
+/* Estilização específica para Pesquisadores */
+/* Botão Login */
+.login-btn {
+    background-color: #ffcc80;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #ffa726;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 50px;
+    max-width: 1100px;
+    margin: auto;
+    text-align: justify;
+}
+
+h1 {
+    text-align: center;
+    color: #1b5e20;
+    font-size: 36px;
+}
+
+.personas {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+
+
+h2 {
+    color: #388e3c;
+}
+
+h3 {
+    color: #2e7d32;
+}
+
+ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+/*login*/
+
+/* Formatação original com as alterações para ícones redondos e pequenos */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #E8F5E9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+.login-container h1 {
+    color: #1B5E20;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-form input:focus {
+    border-color: #43A047;
+    outline: none;
+}
+
+.botao {
+    background: #43A047;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.botao:hover {
+    background: #2E7D32;
+}
+
+.login-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-container a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.social-button img {
+    width: 30px; /* Tamanho reduzido para as imagens */
+    height: 30px; /* Garantir que a altura seja igual à largura para manter a forma circular */
+    border-radius: 50%; /* Tornar a imagem redonda */
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.google {
+    
+    color: white;
+}
+
+.google:hover {
+    background-color: #2E7D32; /* Tom de verde mais escuro no hover */
+}
+
+.github {
+   
+    color: white;
+}
+
+.github:hover {
+    background-color: #388E3C; /* Tom mais claro de verde escuro no hover */
+}
