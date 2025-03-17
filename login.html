@@ -61,26 +61,25 @@
             var profile = googleUser.getBasicProfile();
             var userName = profile.getName();
             var userEmail = profile.getEmail();
-    
+
             console.log('Nome: ' + userName);
             console.log('E-mail: ' + userEmail);
-    
+
             // Redireciona para a página "catalogo.html" após o login
             window.location.href = 'catalogo.html';
         }
-    
+
         // Inicializando o login do Google
         function startApp() {
             gapi.load('auth2', function() {
                 gapi.auth2.init({
-                    client_id: 'AIzaSyCSUlCpg3srDbHhB7OP1k4jts98wSYz95o' // Seu Client ID do Google
+                    client_id: 'SEU_CLIENT_ID_GOOGLE' // Substitua pelo seu Client ID do Google
                 });
             });
         }
-    
+
         // Chamando a função de inicialização assim que a página carrega
         startApp();
     </script>
-    
 </body>
 </html>
