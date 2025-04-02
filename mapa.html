@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interativo - Áreas de Mata Endêmica</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        .popup-content {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .popup-content img {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .legend {
+            background-color: white;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center; margin-top: 20px;">Áreas de Mata Endêmica</h1>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Inicializando o mapa
+        var map = L.map('map').setView([-24.118, -53.209], 12); // Chateaubriand, ajuste conforme necessário
+
+        // Camada base do mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Função para animação dos marcadores
+        function addAnimatedMarker(lat, lon, title, description, imageUrl, color) {
+            var marker = L.circleMarker([lat, lon], {
+                color: color,
+                radius: 10,
+                fillColor: color,
+                fillOpacity: 0.6,
+                weight: 2
+            }).addTo(map).on('click', function() {
+                this.setStyle({ fillOpacity: 1 }); // Animação de aumento de opacidade
+            });
+
+            // Popup animado
+            marker.bindPopup(`
+                <div class="popup-content">
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                    <img src="${imageUrl}" alt="${title}">
+                </div>
+            `);
+
+            // Animação de crescimento do marcador
+            marker.setRadius(25).animate(); 
+        }
+
+        // Dados de exemplo de áreas de mata endêmica (substitua com dados reais)
+        var forestData = [
+            {
+                title: 'Mata Endêmica do Sul',
+                description: 'Área preservada com rica biodiversidade, incluindo espécies raras.',
+                location: [-24.125, -53.215],
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/27/Forest_in_Amazon.jpg',
+                color: 'green'
+            },
+            {
+                title: 'Floresta do Iguaçu',
+                description: 'Área de mata atlântica com uma vasta gama de fauna e flora.',
+                location: [-25.595, -53.109],
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/37/Forest_of_Iguazu_Falls.jpg',
+                color: 'darkgreen'
+            }
+        ];
+
+        // Adicionando os marcadores animados para as áreas de mata endêmica
+        forestData.forEach(function(forest) {
+            addAnimatedMarker(forest.location[0], forest.location[1], forest.title, forest.description, forest.imageUrl, forest.color);
+        });
+
+        // Adicionando a legenda para o mapa
+        var legend = L.control({ position: 'topright' });
+        legend.onAdd = function() {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = '<b>Legenda:</b><br><span style="color:green;">Mata Endêmica</span><br><span style="color:darkgreen;">Floresta Atlântica</span>';
+            return div;
+        };
+        legend.addTo(map);
+
+        // Função de geolocalização para centrar o mapa no usuário
+        map.locate({ setView: true, maxZoom: 16 });
+
+        // Event listener para mostrar a localização do usuário
+        map.on('locationfound', function(e) {
+            L.marker(e.latlng).addTo(map)
+                .bindPopup('Você está aqui!')
+                .openPopup();
+        });
+
+        // Função para alternar entre camadas de mata endêmica e mata atlântica
+        var forestLayer = L.layerGroup();
+        forestData.forEach(function(forest) {
+            var forestMarker = L.circleMarker(forest.location, {
+                color: forest.color,
+                radius: 10,
+                fillColor: forest.color,
+                fillOpacity: 0.6
+            }).addTo(forestLayer);
+        });
+
+        var baseLayers = {
+            "Mapa Base": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+        };
+
+        var overlays = {
+            "Áreas de Mata Endêmica": forestLayer
+        };
+
+        // Controle de camadas
+        L.control.layers(baseLayers, overlays).addTo(map);
+    </script>
+
+</body>
+</html>
