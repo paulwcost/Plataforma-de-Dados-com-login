@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Plataforma de Dados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="imagem_logo">
+            Plataforma de dados sobre espécies nativas
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="flora_brasil.html">Flora Brasil</a></li>
+                <li><a href="login.html">Catálogo</a></li>
+                <li><a href="metodologia.html">Metodologia</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="login-container">
+        <h2>Área Administrativa</h2>
+        <form>
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <div class="form-opcoes">
+                <label><input type="checkbox" name="lembrar"> Lembrar login</label>
+                <a href="#" class="link-pequeno">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Plataforma de Dados - Espécies Nativas</p>
+    </footer>
+
+</body>
+</html>

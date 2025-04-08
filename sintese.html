@@ -41,29 +41,7 @@
     </footer>
 
 
-    <script>
-        fetch('especie_local.json')
-          .then(response => response.json())
-          .then(data => {
-            const container = document.getElementById('container-especies');
-      
-            data.forEach((especie) => {
-              const quadro = document.createElement('div');
-              quadro.classList.add('quadro');
-      
-              quadro.innerHTML = `
-                <img src="${especie.imagem}" alt="${especie.nomePopular}">
-                <h3>${especie.nomePopular}</h3>
-                <p><strong>Nome Científico:</strong> ${especie.nomeCientifico}</p>
-              `;
-      
-              container.appendChild(quadro);
-            });
-          })
-          .catch(error => {
-            console.error('Erro ao carregar os dados das espécies:', error);
-          });
-      </script>
+    <script src="sintese.js"></script>
       
 </body>
 </html>

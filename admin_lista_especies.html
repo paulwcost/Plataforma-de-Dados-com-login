@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Espécies - Plataforma de Dados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="imagem_logo">
+            Plataforma de dados sobre espécies nativas
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="flora_brasil.html">Flora Brasil</a></li>
+                <li><a href="login.html">Catálogo</a></li>
+                <li><a href="metodologia.html">Metodologia</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h1>Espécies Cadastradas</h1>
+        <a href="form_especie.html" class="botao-adicionar">+ Nova Espécie</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Popular</th>
+                    <th>Nome Científico</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Ipê Amarelo</td>
+                    <td>Handroanthus albus</td>
+                    <td>
+                        <a href="form_especie.html" class="btn-editar">Editar</a>
+                        <button class="btn-excluir">Excluir</button>
+                    </td>
+                </tr>
+                <!-- Adicione mais espécies conforme necessário -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Plataforma de Dados - Espécies Nativas</p>
+    </footer>
+
+</body>
+</html>

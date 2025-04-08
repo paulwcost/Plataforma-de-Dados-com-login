@@ -1135,3 +1135,110 @@ section#lista-familias .card {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* admin - layout moderno */
+
+.container, .login-container {
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    background-color: #fdfdfd;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="file"],
+  textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.2);
+  }
+  
+  button,
+  .botao-adicionar,
+  .btn-editar,
+  .btn-excluir {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button:hover,
+  .botao-adicionar:hover,
+  .btn-editar:hover,
+  .btn-excluir:hover {
+    transform: translateY(-2px);
+  }
+  
+  .botao-adicionar {
+    background-color: #4caf50;
+    color: #fff;
+    margin-bottom: 1.5em;
+  }
+  
+  .botao-adicionar:hover {
+    background-color: #45a049;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 14px 16px;
+    text-align: left;
+  }
+  
+  .btn-editar {
+    background-color: #1976d2;
+    color: #fff;
+  }
+  
+  .btn-editar:hover {
+    background-color: #1565c0;
+  }
+  
+  .btn-excluir {
+    background-color: #e53935;
+    color: #fff;
+  }
+  
+  .btn-excluir:hover {
+    background-color: #c62828;
+  }
+  
