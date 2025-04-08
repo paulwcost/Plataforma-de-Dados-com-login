@@ -28,26 +28,10 @@
         <h1>Síntese das Espécies Nativas</h1>
         <p>Aqui você encontra um resumo das espécies nativas cadastradas na plataforma.</p>
 
-        <div class="grid-especies">
-            <div class="quadro">
-                <img src="Figura-22-Myracrodruon-urundeuva-A-aspecto-geral-da-arvore-B-detalhe-do-ramo.png" alt="Urundeira">
-                <h3>Urundeira (Aroeira)</h3>
-                <p><strong>Nome Científico:</strong> Myracrodruon urundeuva</p>
-            </div>
-
-            <div class="quadro">
-                <img src="7fa22c6206aceb4240a0b17e14bdd030.jpg" alt="Tapiriri">
-                <h3>Tapiriri (Jobo, Tapirirá)</h3>
-                <p><strong>Nome Científico:</strong> Tapirira guianensis</p>
-            </div>
-
-            <div class="quadro">
-                <img src="b-31.jpg" alt="Peroba-poca">
-                <h3>Peroba-poca (Peroba-iquira)</h3>
-                <p><strong>Nome Científico:</strong> Aspidosperma cylindrocarpo</p>
-            </div>
+        <div class="grid-especies" id="container-especies">
+            <!-- As espécies serão carregadas aqui via JavaScript -->
         </div>
-
+        
         <p><strong>Quer acessar o catálogo completo?</strong> Faça login para visualizar todas as espécies cadastradas.</p>
         <a href="login.html" class="botao">Fazer Login</a>
     </main>
@@ -56,5 +40,30 @@
         <p>&copy; 2025 Plataforma de Conservação - Todos os direitos reservados.</p>
     </footer>
 
+
+    <script>
+        fetch('especie_local.json')
+          .then(response => response.json())
+          .then(data => {
+            const container = document.getElementById('container-especies');
+      
+            data.forEach((especie) => {
+              const quadro = document.createElement('div');
+              quadro.classList.add('quadro');
+      
+              quadro.innerHTML = `
+                <img src="${especie.imagem}" alt="${especie.nomePopular}">
+                <h3>${especie.nomePopular}</h3>
+                <p><strong>Nome Científico:</strong> ${especie.nomeCientifico}</p>
+              `;
+      
+              container.appendChild(quadro);
+            });
+          })
+          .catch(error => {
+            console.error('Erro ao carregar os dados das espécies:', error);
+          });
+      </script>
+      
 </body>
 </html>
