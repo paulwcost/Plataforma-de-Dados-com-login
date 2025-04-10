@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Metodologia</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="Logo do Projeto">
-            <span>Plataforma de Conservação</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="login.html">Catálogo</a></li>
-                <li><a href="metodologia.html">Metodologia</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo do Projeto"/>
+      <span>Plataforma de Conservação</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="login.html">Catálogo</a></li>
+        <li><a href="metodologia.html">Metodologia</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <div class="metodologia-container">
-            <h1>Metodologia</h1>
-            <p>Este projeto foi desenvolvido com base em uma metodologia robusta, que integra a pesquisa científica, a análise de dados ecológicos e a colaboração com especialistas na área de conservação da biodiversidade. Abaixo, descrevemos os principais componentes da nossa abordagem:</p>
+  <main>
+    <div class="metodologia-container" id="metodologia">
+      <!-- Conteúdo será inserido via JavaScript -->
+    </div>
+  </main>
 
-            <h2>1. Coleta de Dados</h2>
-            <p>A primeira etapa do projeto consistiu na coleta de dados sobre as espécies nativas da região de Chateaubriand. A equipe de pesquisadores fez um levantamento das espécies em campo, utilizando técnicas de amostragem para garantir que os dados fossem representativos da flora local.</p>
+  <footer>
+    <p>&copy; 2025 Plataforma de Conservação - Todos os direitos reservados.</p>
+  </footer>
 
-            <h2>2. Análise Ecológica</h2>
-            <p>Com os dados coletados, realizamos uma análise ecológica das espécies, estudando sua distribuição, abundância e papel no ecossistema. Este passo é crucial para entender a dinâmica da vegetação local e identificar as espécies ameaçadas ou em risco de extinção.</p>
+  <script>
+    fetch('metodologia.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('metodologia');
 
-            <h2>3. Estratégias de Conservação</h2>
-            <p>Com base nos dados e nas análises realizadas, desenvolvemos estratégias de conservação específicas para as espécies identificadas como mais vulneráveis. A implementação de programas de restauração ecológica foi uma das principais ações previstas na metodologia.</p>
+        const titulo = document.createElement('h1');
+        titulo.textContent = data.titulo;
+        container.appendChild(titulo);
 
-            <h2>4. Monitoramento e Avaliação</h2>
-            <p>Por fim, implementamos um sistema de monitoramento contínuo para avaliar o sucesso das ações de conservação e garantir que as medidas adotadas fossem eficazes ao longo do tempo. A coleta de novos dados é uma parte essencial deste processo, permitindo ajustes nas estratégias conforme necessário.</p>
+        const descricao = document.createElement('p');
+        descricao.textContent = data.descricao;
+        container.appendChild(descricao);
 
-            <p>Essa metodologia integrada visa não só a preservação da biodiversidade local, mas também a educação e engajamento da comunidade para que todos possam contribuir para a conservação da natureza.</p>
-        </div>
-    </main>
+        data.etapas.forEach(etapa => {
+          const h2 = document.createElement('h2');
+          h2.textContent = etapa.titulo;
+          container.appendChild(h2);
 
-    <footer>
-        <p>&copy; 2025 Plataforma de Conservação - Todos os direitos reservados.</p>
-    </footer>
+          const p = document.createElement('p');
+          p.textContent = etapa.descricao;
+          container.appendChild(p);
+        });
+
+        const mensagemFinal = document.createElement('p');
+        mensagemFinal.textContent = data.mensagem_final;
+        container.appendChild(mensagemFinal);
+      })
+      .catch(error => {
+        console.error('Erro ao carregar o JSON:', error);
+      });
+  </script>
 </body>
 </html>
