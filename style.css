@@ -52,7 +52,7 @@ nav ul li a:hover {
 
 /* Banner */
 .banner {
-    background: url('foto_assis.jpg') repeat center center/cover; 
+    background: url('./img/foto_assis.jpg') repeat center center/cover; 
     position: relative;
     text-align: center;
     padding: 100px 20px;

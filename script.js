@@ -134,3 +134,62 @@ document.addEventListener("DOMContentLoaded", function () {
     
     }
 });
+
+async function carregarJSON(url) {
+    const resposta = await fetch(url);
+    return await resposta.json();
+}
+
+async function carregarDados() {
+    // HEADER
+    const header = await carregarJSON("./html_dados_variaveis/header.json");
+    console.log(header);
+    document.getElementById("logo_img").src = header.logo_url;
+    document.getElementById("titulo-site").textContent = header.titulo_site;
+    const menu = document.getElementById("menu-links");
+    header.menu_links.forEach(link => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${link.href}">${link.texto}</a>`;
+        menu.appendChild(li);
+    });
+
+    // BANNER
+    const banner = await carregarJSON("html_dados_variaveis/banner.json");
+    document.getElementById("banner-titulo").textContent = banner.titulo;
+    document.getElementById("banner-descricao").textContent = banner.descricao;
+    const botao = document.getElementById("banner-botao");
+    botao.textContent = banner.botao_texto;
+    botao.href = banner.botao_link;
+
+    // DESTAQUES
+    const destaques = await carregarJSON("html_dados_variaveis/destaques.json");
+    const destaquesSec = document.getElementById("destaques-section");
+    destaques.cards.forEach(card => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `<h3>${card.titulo}</h3><p>${card.descricao}</p>`;
+        destaquesSec.appendChild(div);
+    });
+
+    // COLABORADOR
+    const colaborador = await carregarJSON("html_dados_variaveis/colaborador.json");
+    document.getElementById("colab-titulo").textContent = colaborador.titulo;
+    document.getElementById("colab-descricao").textContent = colaborador.descricao;
+    const categorias = document.getElementById("categorias-section");
+    colaborador.categorias.forEach(cat => {
+        const div = document.createElement("div");
+        div.className = "category";
+        div.innerHTML = `
+            <h3>${cat.titulo}</h3>
+            <p>${cat.descricao}</p>
+            <a href="${cat.href}" class="btn">${cat.link_texto}</a>
+        `;
+        categorias.appendChild(div);
+    });
+
+    // FOOTER
+    const footer = await carregarJSON("html_dados_variaveis/footer.json");
+    document.getElementById("footer-texto").innerHTML = footer.texto;
+}
+
+document.addEventListener("DOMContentLoaded", carregarDados);
