@@ -226,26 +226,7 @@
     <!-- inputs aqui -->
   </form>
 
-  <script>
-    // Script para enviar os dados para o PHP
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
 
-      const formData = new FormData(this);
-      fetch("login.php", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.sucesso) {
-          window.location.href = "catalogo.html";
-        } else {
-          alert("Email ou senha incorretos");
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
